@@ -3,12 +3,12 @@ node{
       git 'https://github.com/vijayakumar1/multical.git'
     }
     stage('Compile-Package'){
-      def mvnHome = tool name: 'Maven', type: 'maven'
+      def mvnHome = tool name: 'maven3', type: 'maven'
       sh "${mvnHome}/bin/mvn package"
     }
     stage('Deploy-to-Tomcat'){
-       ws('/home/manju/.jenkins/workspace/mvn_file/target/'){
-       sh 'cp -r *.war /home/manju/Downloads/apache-tomcat-7.0.92/webapps'
+       ws('/home/vijay/.jenkins/workspace/job/target'){
+       sh 'cp -r *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps'
     }
    }
  }
