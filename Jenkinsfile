@@ -1,11 +1,17 @@
 node{
-    stage('SCM Checkout'){
-      git 'https://github.com/vijayakumar1/multical.git'
+    stage('scmcheckout'){
+        git url:'https://github.com/manju1410/multical.git'
     }
-    stage('Compile-Package'){
-      def mvnHome = tool name: 'maven3', type: 'maven'
-      sh "${mvnHome}/bin/mvn package"
+    stage('mvn package'){
+        def Mvn_Home= tool name:'maven3', type:'maven'
+        sh "${Mvn_Home}/bin/mvn package"
     }
+    stage('SonarQube analysis') {
+        def Mvn-Home = tool name: 'maven3', type: 'maven'
+        withSonarQubeEnv('sonar') {
+        sh "${Mvn_Home}/bin/mvn sonar:sonar"
+        }
+    }    
     stage('Deploy-to-Tomcat'){
        ws('/home/vijay/.jenkins/workspace/job/target'){
        sh 'cp -r *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps'
