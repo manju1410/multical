@@ -13,7 +13,7 @@ node{
         }
     }    
     stage('Deploy-to-Tomcat'){
-       ws('/home/vijay/.jenkins/workspace/job/target'){
+       ws('/home/vijay/.jenkins/workspace/job1/target'){
        sh 'cp -r *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps'
     }
    }
