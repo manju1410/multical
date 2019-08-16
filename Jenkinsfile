@@ -3,11 +3,11 @@ node{
         git url:'https://github.com/manju1410/multical.git'
     }
     stage('mvn package'){
-        def MvnHome= tool name:'maven3', type:'maven'
+        def MvnHome= tool name:'maven', type:'maven'
         sh "${MvnHome}/bin/mvn package"
     }
     stage('SonarQube analysis') {
-        def MvnHome = tool name:'maven3', type:'maven'
+        def MvnHome = tool name:'maven', type:'maven'
         withSonarQubeEnv('sonar') {
         sh "${MvnHome}/bin/mvn sonar:sonar"
         }
