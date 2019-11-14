@@ -12,9 +12,6 @@ stage('compile-package'){
 stage('SonarQube Analysis'){
     sh "${mvnHome} sonar:sonar"
 }
-stage('Deploy-to-Tomcat'){
-    sh 'cp -r *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps'
-}
 }
 }
 node{
