@@ -1,0 +1,25 @@
+def buildfunction(string reponame, string repobranch){
+ws("/home/vijay/mypipeline"){
+def gitbaseurl= "https://github.com/manju1410/multical"
+def mvnHome= "/home/vijay/softwares/apache-maven-3.6.1-bin/apache-maven-3.6.1/bin/mvn"
+stage('scm checkout'){
+    git url:"${gitbaseurl}/${reponame}.git", 
+    branch: "${repobranch}"
+}
+stage('compile-package'){
+    sh "${mvnHome} package"
+}
+stage('SonarQube Analysis'){
+    sh "${mvnHome} sonar:sonar"
+}
+stage('Deploy-to-Tomcat'){
+    sh 'cp -r *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps'
+}
+}
+}
+node{
+   buildfunction("${params.reponame}","${params.repobranch}")
+}
+
+
+https://github.com/manju1410/multical/new/master
