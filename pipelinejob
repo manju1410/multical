@@ -1,5 +1,4 @@
 node{
-ws("/home/vijay/mypipeline"){
 def gitbaseurl= "https://github.com/manju1410/multical"
 def mvnHome= "/home/vijay/softwares/apache-maven-3.6.1-bin/apache-maven-3.6.1/bin/mvn"
 stage('scm checkout'){
