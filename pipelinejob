@@ -12,7 +12,7 @@ stage('SonarQube Analysis'){
 }
 stage('Deploy-to-Tomcat'){
     ws("/var/lib/jenkins/workspace/p1job/target"){
-    sh 'cp -rf *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps'
+    sh 'sudo cp -rf *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps'
 }
 }
 }
