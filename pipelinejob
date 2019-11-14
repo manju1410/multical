@@ -11,7 +11,7 @@ stage('SonarQube Analysis'){
     sh "${mvnHome} sonar:sonar"
 }
 stage('Deploy-to-Tomcat'){
-ws("/home/vijay/mypipeline"){
+ws("/home/vijay/mypipeline/workspace/deployjob/target"){
     sh "cp -rf *.war /home/vijay/softwares/apache-tomcat-8.5.35/webapps"
 }
 }
