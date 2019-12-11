@@ -1,6 +1,6 @@
 node{
 def gitbaseurl= "https://github.com/manju1410/multical"
-def mvnHome= "/home/vijay/softwares/apache-maven-3.6.1-bin/apache-maven-3.6.1/bin/mvn"
+def mvnHome= "/home/vijay/softwares/apache-maven-3.6.1/bin/mvn"
 stage('scm checkout'){
     git url:"${gitbaseurl}.git"
 }
